@@ -1,0 +1,6 @@
+Réponses aux Questions de Réflexion:
+1. Une copie superficielle copie seulement les valeurs directes des attributs (ex. : pour Client, copie id, nom, prenom). Une copie profonde alloue de nouvelles ressources pour les pointeurs (ex. : pour Compte, crée un nouveau Client via new). Ici, Client utilise superficielle (suffisant), Compte utilise profonde pour éviter le partage de clients.
+2. Il doit être partagé entre toutes les instances de Compte (pas propre à un objet). Une variable statique existe une fois par classe, permettant de compter globalement les comptes sans duplication.
+3. Une méthode normale opère sur une instance (utilise this). Une méthode statique n'est pas liée à une instance (pas de this), elle accède seulement aux membres statiques et peut être appelée via la classe (ex. : Compte::afficherNombreTotalComptes()).
+4. Pour des fonctions courtes et simples, appelées fréquemment, comme calculInteret. Cela évite l'overhead d'appel de fonction, améliorant les performances sans complexité. Pas utile pour des fonctions longues ou complexes.
+5. Cela cause des fuites mémoire : la mémoire allouée pour le client n'est pas libérée, s'accumulant au fil des exécutions, pouvant mener à des crashes ou une utilisation excessive de RAM. Le destructeur garantit la libération automatique.
